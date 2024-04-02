@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container1">
+       
+        <h1>Data Table</h1>
+        <button id="addButton">Add Data</button>
+
+        <div id="addRowForm">
+            <div>
+            <form id="addRowFormData">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id"><br>
+        
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName"><br>
+        
+                <label for="productTitle">Product Title:</label>
+                <input type="text" id="productTitle" name="productTitle"><br>
+        
+                <label for="productDescription">Product Description:</label>
+                <input type="text" id="productDescription" name="productDescription"><br>
+        
+                <label for="productVendor">Product Vendor:</label>
+                <input type="text" id="productVendor" name="productVendor"><br>
+        
+                <label for="inStock">In Stock:</label>
+                <input type="text" id="inStock" name="inStock"><br>
+        
+                <label for="buyingPrice">Buying Price:</label>
+                <input type="text" id="buyingPrice" name="buyingPrice"><br>
+        
+                <label for="salePrice">Sale Price:</label>
+                <input type="text" id="salePrice" name="salePrice"><br>
+        
+                <label for="purchaseQuantity">Purchase Quantity:</label>
+                <input type="text" id="purchaseQuantity" name="purchaseQuantity"><br>
+        
+                <label for="productType">Product Type:</label>
+                <input type="text" id="productType" name="productType"><br>
+        
+                <label for="shippingRates">Shipping Rates:</label>
+                <input type="text" id="shippingRates" name="shippingRates"><br>
+        
+                <label for="refillLimit">Refill Limit:</label>
+                <input type="text" id="refillLimit" name="refillLimit"><br>
+        
+                <label for="productLocation">Product Location Address:</label>
+                <input type="text" id="productLocation" name="productLocation"><br>
+        
+                <button type="submit" id="saveNewButton">Save</button>
+                <button type="button" id="cancelButton">Cancel</button>
+            </form>
+        </div>
+        </div>
+        
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Product title</th>
+                    <th>Product description</th>
+                    <th>Product vendor</th>
+                    <th>In stock</th>
+                    <th>Buying price</th>
+                    <th>Sale price</th>
+                    <th>Purchase quantity</th>
+                    <th>Product type</th>
+                    <th>Shipping rates</th>
+                    <th>Refill limit</th>
+                    <th>Product location address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal content -->
+    <div class="modal-content" id="editModalContent">
+        <span class="modal-close" id="editModalClose">&times;</span>
+        <form id="editForm" class="edit-form">
+            <label for="editId">ID:</label>
+            <input type="text" id="editId" name="id" readonly><br><br>
+            <label for="editProductName">Product Name:</label>
+            <input type="text" id="editProductName" name="productName"><br><br>
+            <label for="editProductTitle">Product Title:</label>
+            <input type="text" id="editProductTitle" name="productTitle"><br><br>
+            <label for="editProductDescription">Product Description:</label>
+            <input type="text" id="editProductDescription" name="productDescription"><br><br>
+            <label for="editProductVendor">Product Vendor:</label>
+            <input type="text" id="editProductVendor" name="productVendor"><br><br>
+            <label for="editInStock">In Stock:</label>
+            <input type="text" id="editInStock" name="inStock"><br><br>
+            <label for="editBuyingPrice">Buying Price:</label>
+            <input type="text" id="editBuyingPrice" name="buyingPrice"><br><br>
+            <label for="editSalePrice">Sale Price:</label>
+            <input type="text" id="editSalePrice" name="salePrice"><br><br>
+            <label for="editPurchaseQuantity">Purchase Quantity:</label>
+            <input type="text" id="editPurchaseQuantity" name="purchaseQuantity"><br><br>
+            <label for="editProductType">Product Type:</label>
+            <input type="text" id="editProductType" name="productType"><br><br>
+            <label for="editShippingRates">Shipping Rates:</label>
+            <input type="text" id="editShippingRates" name="shippingRates"><br><br>
+            <label for="editRefillLimit">Refill Limit:</label>
+            <input type="text" id="editRefillLimit" name="refillLimit"><br><br>
+            <label for="editProductLocation">Product Location Address:</label>
+            <input type="text" id="editProductLocation" name="productLocation"><br><br>
+            <button type="submit" id="editSaveButton">Save</button>
+        </form>
+
+    </div>
+    <label for="customColumns">Select Custom Columns:</label>
+    <select id="customColumns">
+        <option value="Product sales">Product sales</option>
+        <option value="Product margin">Product margin</option>
+    </select>
+
+    <script src="table.js"></script>
+</body>
+
+</html>
