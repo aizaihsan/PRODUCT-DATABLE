@@ -24,7 +24,9 @@ th,
 td {
     border: 1px solid #dddddd;
     text-align: left;
+    font-size:large;
     padding: 2px;
+    width: 80x;
 }
 
 tr:nth-child(even) {
@@ -91,23 +93,6 @@ button:hover {
 #addRowForm {
     display: none;
 }
-
-.addRowForm {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.addRowForm label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.addRowForm input[type="text"],
 .addRowForm button[type="submit"] {
     width: 100%;
     padding: 8px;
@@ -201,23 +186,68 @@ button:hover {
     /* Black w/ opacity */
 }
 
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
+
+/* Dropdown container */
+#customColumns {
+    margin-top: 10px;
+}
+
+/* Dropdown label */
+label[for="customColumns"] {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Dropdown select */
+#customColumns {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* Dropdown options */
+#customColumns option {
+    font-size: 14px;
+}
+
+/* Dropdown arrow */
+#customColumns::after {
+    content: '\25BC'; /* Downward arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Style when dropdown is open */
+#customColumns:focus {
+    outline: none;
+    border-color: #007bff; /* Blue color */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue shadow */
+}
+  
+#addRowForm {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+}
+
+#addRowForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#addRowForm input {
     width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
 }

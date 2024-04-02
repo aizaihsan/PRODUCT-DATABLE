@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateTable();
         document.getElementById('addRowFormData').reset();
         document.getElementById('addRowForm').style.display = 'none';
+        
 
     });
 
@@ -162,34 +163,43 @@ document.addEventListener('DOMContentLoaded', function () {
     // Create an object to store filter values for each column
     let filters = {};
 
-    // Add filter inputs or select elements to each table header
-    headers.forEach((header, index) => {
-        let filterInput = document.createElement('input');
-        filterInput.setAttribute('type', 'text');
-        filterInput.setAttribute('placeholder', 'Filter...');
+// Assuming headers is an array of th elements representing table headers
+headers.forEach((header, index) => {
+    // Skip the last header (Actions column)
+    if (index === headers.length - 1) {
+        return;
+    }
 
-        filterInput.addEventListener('input', () => {
-            filters[index] = filterInput.value.toLowerCase();
-            filterTable();
-        });
+    let filterInput = document.createElement('input');
+    filterInput.setAttribute('type', 'text');
+    filterInput.setAttribute('placeholder', 'Filter...');
 
-        header.appendChild(filterInput);
+    filterInput.addEventListener('input', () => {
+        filters[index] = filterInput.value.toLowerCase();
+        filterTable();
     });
 
-    // Function to filter the table
+    header.appendChild(filterInput);
+});
+
+
     function filterTable() {
         let rows = table.querySelectorAll('tbody tr');
-
+    
         rows.forEach(row => {
             let display = true;
-
-            Object.keys(filters).forEach(index => {
-                let cellValue = row.cells[index].textContent.toLowerCase();
-                if (cellValue.indexOf(filters[index]) === -1) {
+    
+            // Iterate over all columns except the last one (Actions column)
+            for (let i = 0; i < row.cells.length - 1; i++) {
+                if (!filters.hasOwnProperty(i)) continue; // Skip if not a filterable column
+    
+                let cellValue = row.cells[i].textContent.toLowerCase();
+                if (cellValue.indexOf(filters[i]) === -1) {
                     display = false;
+                    break; // Exit the loop early if any filter condition is not met
                 }
-            });
-
+            }
+    
             if (display) {
                 row.style.display = '';
             } else {
@@ -197,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+    
 
     // add coulunms
 
@@ -209,29 +220,30 @@ document.addEventListener('DOMContentLoaded', function () {
     function addCustomColumn(columnName) {
         // Update Table Header
         const tableHeader = document.querySelector('#data-table thead tr');
+        const actionHeader = tableHeader.querySelector('th:last-child'); // Get the last header (Actions column)
         const newHeaderCell = document.createElement('th');
         newHeaderCell.textContent = columnName;
-        tableHeader.appendChild(newHeaderCell);
-
+        tableHeader.insertBefore(newHeaderCell, actionHeader);
+    
         // Update Table Body
         const tableRows = document.querySelectorAll('#data-table tbody tr');
         tableRows.forEach(row => {
-            const newCell = row.insertCell(-1);
-            newCell.textContent = 'Custom Data'; // Provide data for the custom column
+            const newCell = row.insertCell(13); 
+            newCell.textContent = 'Custom Data'; 
         });
-
+    
         // Update local storage
         data.forEach(item => {
             item[columnName] = ''; // Initialize custom column to empty string
         });
         localStorage.setItem('data', JSON.stringify(data));
     }
-
+    
     // Check if custom columns exist in local storage, otherwise initialize them
     if (!data[0].hasOwnProperty('Product sales')) {
         // Add custom columns to the data array and update local storage
         addCustomColumn('Product sales');
         addCustomColumn('Product margin');
     }
-
+    
 });
